@@ -1,3 +1,4 @@
-#Desafio Técnico - Full Stack Pleno
+# 🚀 Desafio Técnico - Full Stack Pleno
 
-Sistema de Cadastro de Beneficiários e Planos utilizando .NET Core 9 (backend) e Angular 19/20 (frontend).
+Sistema de **Cadastro de Beneficiários e Planos** utilizando **.NET Core 9** (backend) e **Angular 19/20** (frontend).
+
