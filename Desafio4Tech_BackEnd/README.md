@@ -16,3 +16,6 @@ dotnet run --project Desafio4Tech.API/Desafio4Tech.API.csproj
 
 ## A API estará disponível em:
 https://localhost:44307
+
+## Observações
+Não foi implementado testes unitários.
