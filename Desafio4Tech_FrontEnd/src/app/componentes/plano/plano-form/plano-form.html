@@ -1,0 +1,33 @@
+<form [formGroup]="form" (ngSubmit)="save()" class="row col-12 p-4 border rounded shadow-sm bg-dark-light" style="background-color: #2c2c2c; color: #fff;">
+
+  <div class="col-md-4 mb-3">
+    <label for="nome" class="form-label">Nome Plano</label>
+    <input id="nome" 
+           type="text" 
+           class="form-control"
+           [class.is-invalid]="form.get('nome')?.invalid && form.get('nome')?.touched"
+           formControlName="nome" 
+           placeholder="Digite o nome do plano">
+    <div class="invalid-feedback">
+      Nome do plano é obrigatório.
+    </div>
+  </div>
+
+  <div class="col-md-4 mb-3">
+    <label for="codigoAns" class="form-label">Código ANS</label>
+
+    <input id="codigoAns" type="text" class="form-control" [class.is-invalid]="form.get('codigo_registro_ans')?.invalid && form.get('codigo_registro_ans')?.touched"
+    formControlName="codigo_registro_ans" placeholder="Digite o código ANS">
+
+    <label class="invalid-feedback" >
+      O código ANS é obrigatório.
+    </label>
+
+  </div>
+
+  <div class="col-md-2 d-flex align-items-end gap-2 mb-3" style="top:10px">
+    <button type="submit" class="btn btn-success flex-grow-1" [disabled]="this.form.invalid">Salvar</button>
+    <button type="button" class="btn btn-secondary flex-grow-1" routerLink="/planos">Cancelar</button>
+  </div>
+
+</form>

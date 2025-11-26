@@ -1,0 +1,47 @@
+
+
+<table class="table table-striped table-bordered">
+    <thead class="table-dark">
+        <tr>
+        <th>Nome</th>
+        <th>CPF</th>
+        <th>Data Nascimento</th>
+        <th>Status</th>
+        <th>Plano</th>
+        <th style="width: 180px">Ações</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let b of beneficiarios">
+        <td>{{ b.nome_completo }}</td>
+        <td>{{ b.cpf }}</td>
+        <td>{{ b.data_nascimento | date:'dd/MM/yyyy'}}</td>
+        <td [ngClass]="{'text-success': b.status === 'ATIVO', 'text-danger': b.status === 'INATIVO'}">
+            {{ b.status }}
+        </td>
+        <td>{{ b.plano }}</td>
+
+        <td>
+            <button
+            class="btn btn-warning btn-sm me-2"
+            [routerLink]="['/beneficiarios/editar', b.id]"
+            >
+            Editar
+            </button>
+
+            <button
+            class="btn btn-danger btn-sm"
+            (click)="deleteBeneficiario(b.id!)"
+            >
+            Excluir
+            </button>
+            
+        </td>
+        </tr>
+    </tbody>
+</table>
+   
+<button class="btn btn-dark mb-3 float-end me-3" routerLink="/beneficiarios/novo">
+    Novo Beneficiário
+</button>

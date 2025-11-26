@@ -1,0 +1,27 @@
+<ul class="nav nav-tabs custom-tabs">
+  <li class="nav-item">
+    <a 
+      class="nav-link"
+      routerLink="/planos"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      <i class="bi bi-list-check me-1"></i> Planos
+    </a>
+  </li>
+
+  <li class="nav-item">
+    <a 
+      class="nav-link"
+      routerLink="/beneficiarios"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      <i class="bi bi-people-fill me-1"></i> Beneficiários
+    </a>
+  </li>
+</ul>
+
+<div class="tab-content mt-3">
+  <router-outlet></router-outlet>
+</div>

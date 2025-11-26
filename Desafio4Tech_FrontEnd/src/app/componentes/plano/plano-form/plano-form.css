@@ -1,0 +1,3 @@
+.input-col {
+  min-height: 80px; /* ajuste conforme o tamanho do input + mensagem de erro */
+}

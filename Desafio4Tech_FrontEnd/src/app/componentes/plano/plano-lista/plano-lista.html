@@ -1,0 +1,39 @@
+
+
+
+<table class="table table-striped table-bordered">
+  <thead class="table-dark">
+    <tr>
+      <th>Nome</th>
+      <th>Código ANS</th>
+      <th style="width: 160px;">Ações</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let plano of planos">
+      <td>{{ plano.nome }}</td>
+      <td>{{ plano.codigo_registro_ans }}</td>
+      <td>
+        <button
+          class="btn btn-warning btn-sm me-2"
+          [routerLink]="['/planos/editar', plano.id]"
+        >
+          Editar
+        </button>
+
+        <button
+          class="btn btn-danger btn-sm"
+          (click)="deletePlano(plano.id!)">
+          Excluir
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<button class="btn btn-dark mb-3 float-end me-3" routerLink="/planos/novo">
+  Novo Plano
+</button>
+
+  

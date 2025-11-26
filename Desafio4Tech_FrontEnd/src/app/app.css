@@ -1,0 +1,36 @@
+.custom-tabs .nav-link {
+  color: #555;
+  font-weight: 500;
+  padding: 12px 20px;
+  border: none;
+  position: relative;
+  transition: all .3s ease;
+}
+
+.custom-tabs .nav-link:hover {
+  color: #01060e;
+  background-color: rgba(13, 110, 253, 0.1);
+  border-radius: 8px 8px 0 0;
+}
+
+.custom-tabs .nav-link.active {
+  color: #01060e !important;
+  font-weight: 600;
+  background-color: transparent;
+}
+
+.custom-tabs .nav-link.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 100%;
+  background-color: #01060e;
+  border-radius: 2px;
+}
+
+/* Animação suave entre abas */
+.custom-tabs .nav-link::after {
+  transition: width .3s ease;
+}
