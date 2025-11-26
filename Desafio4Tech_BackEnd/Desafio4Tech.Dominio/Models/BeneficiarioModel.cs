@@ -12,6 +12,8 @@ namespace Desafio4Tech.Dominio.Models
         public Status Status { get; set; } = Status.ATIVO;
         public long IdPlano { get; set; }
         public PlanoModel Plano { get; set; }
+
+        public DateTime? DataExclusao { get; set; }
     }
 
 }

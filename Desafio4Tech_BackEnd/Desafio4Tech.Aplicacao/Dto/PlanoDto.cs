@@ -8,6 +8,7 @@ namespace Desafio4Tech.Aplicacao.Dto
         public string Nome { get; set; }
 
         [Required(ErrorMessage = "O código de registro da ANS é obrigatório")]
-        public string Codigo_registro_ans { get; set; }
+        public string CodigoRegistroAns { get; set; }
+        public int Prioridade { get; set; }
     }
 }

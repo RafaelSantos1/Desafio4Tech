@@ -14,23 +14,26 @@
 
     <tbody>
         <tr *ngFor="let b of beneficiarios">
-        <td>{{ b.nome_completo }}</td>
+        <td>{{ b.nomeCompleto }}</td>
         <td>{{ b.cpf }}</td>
-        <td>{{ b.data_nascimento | date:'dd/MM/yyyy'}}</td>
-        <td [ngClass]="{'text-success': b.status === 'ATIVO', 'text-danger': b.status === 'INATIVO'}">
+        <td>{{ b.dataNascimento | date:'dd/MM/yyyy'}}</td>
+        <td *ngIf="b.dataExclusao == null" [ngClass]="{'text-success': b.status === 'ATIVO', 'text-danger': b.status === 'INATIVO'}">
             {{ b.status }}
+        </td>
+        <td *ngIf="b.dataExclusao != null" class="text-primary">
+            Exclusão pendente
         </td>
         <td>{{ b.plano }}</td>
 
         <td>
-            <button
+            <button [disabled]="b.dataExclusao != null"
             class="btn btn-warning btn-sm me-2"
             [routerLink]="['/beneficiarios/editar', b.id]"
             >
             Editar
             </button>
 
-            <button
+            <button [disabled]="b.dataExclusao != null"
             class="btn btn-danger btn-sm"
             (click)="deleteBeneficiario(b.id!)"
             >

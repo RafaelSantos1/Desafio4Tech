@@ -29,7 +29,7 @@ namespace Desafio4Tech.Servico.Servico
             await _uow.CommitAsync();
         }
 
-        public virtual async Task<IQueryable<TEntity>> FindAsync(Expression<Func<TEntity, bool>> expression)
+        public virtual async Task<IQueryable<TEntity>> GetAsync(Expression<Func<TEntity, bool>> expression)
         {
             return await _repository.GetAsync(expression);
         }
@@ -39,7 +39,7 @@ namespace Desafio4Tech.Servico.Servico
             return await _repository.SingleAsync(expression);
         }
 
-        public virtual async Task<IQueryable<TEntity>> GetAsync()
+        public virtual async Task<IQueryable<TEntity>> GetAllAsync()
         {
             return await _repository.GetAllAsync();
         }
@@ -52,6 +52,11 @@ namespace Desafio4Tech.Servico.Servico
         public async Task<TEntity> GetByIdAsync(long id)
         {
             return await _repository.GetByIdAsync(id);
+        }
+
+        public async Task<bool> ExistsAsync(Expression<Func<TEntity, bool>> expression)
+        {
+            return await _repository.ExistsAsync(expression);
         }
 
         public virtual async Task<TEntity> UpdateAsync(TEntity obj)

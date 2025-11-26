@@ -75,7 +75,7 @@ namespace Desafio4Tech.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, response);
             }
 
-            return CreatedAtAction(nameof(CriarBeneficiario), new { id = response.Dados.Id }, response.Dados);
+            return CreatedAtAction(nameof(CriarBeneficiario), new { id = response.Dados.Id }, response);
         }
 
         /// <summary>
@@ -101,13 +101,13 @@ namespace Desafio4Tech.Controllers
         }
 
         /// <summary>
-        /// Deleta um beneficiário pelo ID
+        /// Deleta um beneficiário existente
         /// </summary>
-        [HttpDelete("{id}")]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [HttpPut("deletar/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> DeletarBeneficiario(int id)
+        public async Task<IActionResult> DeletaBeneficiario(long id)
         {
             var beneficiario = await _facade.Deletar(id);
 
@@ -121,5 +121,28 @@ namespace Desafio4Tech.Controllers
 
             return Ok(beneficiario);
         }
+
+
+        ///// <summary>
+        ///// Deleta um beneficiário pelo ID
+        ///// </summary>
+        //[HttpDelete("{id}")]
+        //[ProducesResponseType(StatusCodes.Status204NoContent)]
+        //[ProducesResponseType(StatusCodes.Status404NotFound)]
+        //[ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        //public async Task<IActionResult> DeletarBeneficiario(int id)
+        //{
+        //    var beneficiario = await _facade.Deletar(id);
+
+        //    if (!beneficiario.Status)
+        //    {
+        //        if (beneficiario.Error == "ValidationError")
+        //            return NotFound(beneficiario);
+
+        //        return StatusCode(StatusCodes.Status500InternalServerError, beneficiario);
+        //    }
+
+        //    return Ok(beneficiario);
+        //}
     }
 }

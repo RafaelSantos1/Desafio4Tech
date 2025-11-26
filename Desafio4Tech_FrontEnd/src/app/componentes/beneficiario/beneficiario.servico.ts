@@ -28,6 +28,6 @@ export class BeneficiarioServico {
   }
 
   delete(id: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/${id}`);
+    return this.http.put(`${this.apiUrl}/deletar/${id}`,{});
   }
 }

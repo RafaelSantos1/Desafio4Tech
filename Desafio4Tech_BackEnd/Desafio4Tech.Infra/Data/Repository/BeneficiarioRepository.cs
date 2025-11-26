@@ -2,6 +2,7 @@
 using Desafio4Tech.Dominio.Models;
 using Desafio4Tech.Infra.Data;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace Infra.Data.Repository
 {
@@ -9,7 +10,15 @@ namespace Infra.Data.Repository
     {
         public BeneficiarioRepository(AppDbContext context) : base(context)
         {
-        }       
+        }
+
+        public async Task<IQueryable<BeneficiarioModel>> GetAsync(Expression<Func<BeneficiarioModel, bool>> expression)
+        {
+            return await Task.Run(() =>
+            {
+                return _dbSet.AsNoTracking().Where(expression).Include(x => x.Plano);
+            });
+        }
 
         public override async Task<IQueryable<BeneficiarioModel>> GetAllAsync()
         {

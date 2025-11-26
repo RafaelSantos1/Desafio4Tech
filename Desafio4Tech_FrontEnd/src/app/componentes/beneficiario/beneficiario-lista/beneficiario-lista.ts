@@ -31,7 +31,6 @@ export class BeneficiarioLista implements OnInit {
 
   deleteBeneficiario(id: number) {
     if(confirm('Deseja realmente excluir este beneficiário?')){
-      this.beneficiarioServico.delete(id).subscribe(() => this.loadBeneficiarios());
        this.beneficiarioServico.delete(id).subscribe({
         next: (response) => {
           this.toastr.success(response.mensagem, 'Sucesso'); 

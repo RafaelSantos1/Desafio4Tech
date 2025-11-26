@@ -16,14 +16,25 @@
   <div class="col-md-4 mb-3">
     <label for="codigoAns" class="form-label">Código ANS</label>
 
-    <input id="codigoAns" type="text" class="form-control" [class.is-invalid]="form.get('codigo_registro_ans')?.invalid && form.get('codigo_registro_ans')?.touched"
-    formControlName="codigo_registro_ans" placeholder="Digite o código ANS">
+    <input id="codigoAns" type="text" class="form-control" [class.is-invalid]="form.get('codigoRegistroAns')?.invalid && form.get('codigoRegistroAns')?.touched"
+    formControlName="codigoRegistroAns" placeholder="Digite o código ANS">
 
     <label class="invalid-feedback" >
       O código ANS é obrigatório.
     </label>
 
   </div>
+
+  <div class="col-md-4 mb-3">
+    <label for="prioridade" class="form-label">Prioridade</label>
+    <select id="prioridade" class="form-select" [class.is-invalid]="form.get('prioridade')?.invalid && form.get('prioridade')?.touched"
+            formControlName="prioridade">    
+      <option *ngFor="let p of listaPrioridade" [ngValue]="p">{{p}}</option>
+    </select>
+    <div class="invalid-feedback">
+      Prioridade é obrigatório.
+    </div>
+  </div> 
 
   <div class="col-md-2 d-flex align-items-end gap-2 mb-3" style="top:10px">
     <button type="submit" class="btn btn-success flex-grow-1" [disabled]="this.form.invalid">Salvar</button>

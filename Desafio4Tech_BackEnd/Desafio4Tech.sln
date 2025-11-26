@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Desafio4Tech.Servico", "Des
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Desafio4Tech.Aplicacao", "Desafio4Tech.Aplicacao\Desafio4Tech.Aplicacao.csproj", "{7549613A-2FA1-443E-BCFF-6BD66C7528AB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Desafio4Tech.Worker", "Worker\Desafio4Tech.Worker.csproj", "{0967D79E-DC50-4809-8EFC-8A9B999C0344}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,10 @@ Global
 		{7549613A-2FA1-443E-BCFF-6BD66C7528AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7549613A-2FA1-443E-BCFF-6BD66C7528AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7549613A-2FA1-443E-BCFF-6BD66C7528AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0967D79E-DC50-4809-8EFC-8A9B999C0344}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0967D79E-DC50-4809-8EFC-8A9B999C0344}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0967D79E-DC50-4809-8EFC-8A9B999C0344}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0967D79E-DC50-4809-8EFC-8A9B999C0344}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,6 +72,7 @@ Global
 		{FC3787B7-705C-42AC-BA4A-2D13EB8BBAF1} = {367CA477-6850-4980-B520-58CEECFB487D}
 		{5B3FB3B3-A8CE-4596-B360-A8E77CC848AE} = {10113F39-F99C-4900-8C22-E5EEA0047C81}
 		{7549613A-2FA1-443E-BCFF-6BD66C7528AB} = {74EE2876-C792-4DFE-BEB4-6EFD40E7546D}
+		{0967D79E-DC50-4809-8EFC-8A9B999C0344} = {10113F39-F99C-4900-8C22-E5EEA0047C81}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {74B25B10-59DC-479B-99FE-33EAA566CDF6}

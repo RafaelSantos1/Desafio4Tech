@@ -6,9 +6,11 @@ using Desafio4Tech.Dominio.Interface.Servico;
 using Desafio4Tech.Infra.Data;
 using Desafio4Tech.Infra.UnitOfWork;
 using Desafio4Tech.Servico.Servico;
+using Desafio4Tech.Worker.Workes;
 using DotNetEnv;
 using Infra.Data.Repository;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 using System.Reflection;
 using System.Text.Json.Serialization;
 
@@ -40,6 +42,8 @@ builder.Services.AddSwaggerGen(c =>
     c.IncludeXmlComments(xmlPath);
 });
 
+builder.Services.AddHostedService<ProcessamentoExclusaoBeneficiario>();
+
 builder.Services.AddAutoMapper(typeof(PlanoProfile).Assembly);
 builder.Services.AddAutoMapper(typeof(BeneficiarioProfile).Assembly);
 
@@ -52,6 +56,19 @@ builder.Services.AddScoped<IBeneficiarioServico, BeneficiarioServico>();
 builder.Services.AddScoped<IPlanoRepository, PlanoRepository>();
 builder.Services.AddScoped<IPlanoFacade, PlanoFacade>();
 builder.Services.AddScoped<IPlanoServico, PlanoServico>();
+
+
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Information()
+    .WriteTo.Console() 
+    .WriteTo.File(
+        "Logs/worker-log.txt", 
+        rollingInterval: RollingInterval.Day, // cria um arquivo por dia
+        outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss} [{Level:u3}] {Message:lj}{NewLine}{Exception}"
+    )
+    .CreateLogger();
+
+builder.Host.UseSerilog();
 
 var app = builder.Build();
 

@@ -14,7 +14,7 @@ import { CommonModule } from '@angular/common';
 export class PlanoForm implements OnInit {
   form!: FormGroup;
   id?: number;
-
+  listaPrioridade : number[] = [1,2,3,4,5];
   constructor(
     private fb: FormBuilder,
     private planoServico: PlanoServico,
@@ -28,7 +28,8 @@ export class PlanoForm implements OnInit {
 
     this.form = this.fb.group({
       nome: ['', Validators.required],
-      codigo_registro_ans: ['', Validators.required]
+        codigoRegistroAns: ['', Validators.required],
+      prioridade: [5, Validators.required]
     });
 
    

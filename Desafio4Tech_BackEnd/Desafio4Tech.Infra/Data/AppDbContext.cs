@@ -22,7 +22,11 @@ namespace Desafio4Tech.Infra.Data
               .HasOne(b => b.Plano)
               .WithMany(p => p.Beneficiarios)
               .HasForeignKey(b => b.IdPlano)
-              .OnDelete(DeleteBehavior.Restrict); // ou Cascade, se preferir
+              .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<PlanoModel>()
+               .Property(p => p.Prioridade)
+               .HasDefaultValue(5);
         }
 
     }

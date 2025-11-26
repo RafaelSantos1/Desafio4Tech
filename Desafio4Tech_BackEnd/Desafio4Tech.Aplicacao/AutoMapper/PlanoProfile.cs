@@ -8,10 +8,8 @@ namespace Desafio4Tech.Aplicacao.AutoMapper
     {
         public PlanoProfile()
         {
-            CreateMap<PlanoDto, PlanoModel>()
-                .ForMember(dest => dest.CodigoRegistroAns, opt => opt.MapFrom(src => src.Codigo_registro_ans));
-            CreateMap<PlanoModel, PlanoDto>()
-                .ForMember(dest => dest.Codigo_registro_ans, opt => opt.MapFrom(src => src.CodigoRegistroAns));
+            CreateMap<PlanoDto, PlanoModel>();
+            CreateMap<PlanoModel, PlanoDto>();
 
             CreateMap<IQueryable<PlanoDto>, IQueryable<PlanoModel>>();
             CreateMap<IQueryable<PlanoModel>, IQueryable<PlanoDto>>();

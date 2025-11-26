@@ -72,7 +72,7 @@ namespace Desafio4Tech.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, plano);
             }
 
-            return CreatedAtAction(nameof(EditarPlano), new { id = plano.Dados.Id }, plano);
+            return CreatedAtAction(nameof(CriarPlano), new { id = plano.Dados.Id }, plano);
         }
 
 

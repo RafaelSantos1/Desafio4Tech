@@ -18,7 +18,7 @@ export class BeneficiarioForm implements OnInit {
 
   form!: FormGroup;
   id: number = 0;
-  planos: Plano[] = [];
+  listaPlanos: Plano[] = [];
   dataLimite: string = ""; 
   constructor(
     private fb: FormBuilder,
@@ -35,18 +35,18 @@ export class BeneficiarioForm implements OnInit {
     this.id = +this.route.snapshot.params['id'];
 
     this.form = this.fb.group({
-      nome_completo: ['', Validators.required],
+      nomeCompleto: ['', Validators.required],
      cpf: [{ value: '', disabled: this.id > 0 }, Validators.required],
-      data_nascimento: [Date, Validators.required],
+      dataNascimento: [Date, Validators.required],
       status: ['', Validators.required],
       idPlano: ['', Validators.required]
     });
     
-    this.planoServico.getAll().subscribe(response => { this.planos = response.dados });
+    this.planoServico.getAll().subscribe(response => { this.listaPlanos = response.dados });
 
     if (this.id) {
       this.beneficiarioServico.getById(this.id).subscribe(result => {
-        result.dados.data_nascimento = new Date(result.dados.data_nascimento).toISOString().substring(0, 10);
+        result.dados.dataNascimento = new Date(result.dados.dataNascimento).toISOString().substring(0, 10);
         this.form.patchValue(result.dados);
       });
     }

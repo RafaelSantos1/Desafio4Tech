@@ -5,6 +5,7 @@ using Desafio4Tech.Dominio.Exceptions;
 using Desafio4Tech.Dominio.Interface.Repository;
 using Desafio4Tech.Dominio.Interface.Servico;
 using Desafio4Tech.Dominio.Models;
+using System.Linq.Expressions;
 using System.Numerics;
 
 namespace Desafio4Tech.Servico.Servico
@@ -17,6 +18,11 @@ namespace Desafio4Tech.Servico.Servico
         {
             _planoServico = planoServico;
         }
+
+        //public override async Task<IQueryable<BeneficiarioModel>> GetAsync(Expression<Func<BeneficiarioModel, bool>> expression)
+        //{
+        //    return await _repository.GetAsync(expression);
+        //}
 
         public async Task<BeneficiarioModel> Criar(BeneficiarioModel beneficiario, long? idPlano,string nomePlano)
         {            

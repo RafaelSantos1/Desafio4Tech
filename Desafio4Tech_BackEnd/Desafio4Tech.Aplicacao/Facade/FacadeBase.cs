@@ -52,7 +52,7 @@ namespace Desafio4Tech.Aplicacao.Facade
         }
 
 
-        public async Task<ResponseDto<TDto>> Deletar(long id)
+        public virtual async Task<ResponseDto<TDto>> Deletar(long id)
         {
             ResponseDto<TDto> response = new ResponseDto<TDto>();
 
@@ -127,13 +127,13 @@ namespace Desafio4Tech.Aplicacao.Facade
             }
         }
 
-        public async Task<ResponseDto<List<TDto>>> Listar()
+        public virtual async Task<ResponseDto<List<TDto>>> Listar()
         {
             ResponseDto<List<TDto>> response = new ResponseDto<List<TDto>>();
 
             try
             {
-                var result = await _servico.GetAsync();
+                var result = await _servico.GetAllAsync();
 
                 response.Dados = _mapper.Map<List<TDto>>(result.ToList());
                 response.Mensagem = $"{typeof(TEntity).Name.Replace("Model", "")}s listados com sucesso";

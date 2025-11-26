@@ -4,5 +4,7 @@ namespace Desafio4Tech.Dominio.Interface.Servico
 {
     public interface IPlanoServico : IServico<PlanoModel>
     {
+        Task<PlanoModel> Criar(PlanoModel plano);
+        Task Deletar(long id);
     }
 }

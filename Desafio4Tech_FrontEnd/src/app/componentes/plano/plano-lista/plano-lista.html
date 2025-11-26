@@ -6,6 +6,7 @@
     <tr>
       <th>Nome</th>
       <th>Código ANS</th>
+      <th>Prioridade</th>
       <th style="width: 160px;">Ações</th>
     </tr>
   </thead>
@@ -13,7 +14,8 @@
   <tbody>
     <tr *ngFor="let plano of planos">
       <td>{{ plano.nome }}</td>
-      <td>{{ plano.codigo_registro_ans }}</td>
+      <td>{{ plano.codigoRegistroAns }}</td>
+      <td>{{ plano.prioridade}}</td>
       <td>
         <button
           class="btn btn-warning btn-sm me-2"
