@@ -1,0 +1,55 @@
+﻿using AutoMapper;
+using Desafio4Tech.Aplicacao.Dto;
+using Desafio4Tech.Aplicacao.Interface.Facade;
+using Desafio4Tech.Dominio.Exceptions;
+using Desafio4Tech.Dominio.Interface.Servico;
+using Desafio4Tech.Dominio.Models;
+
+namespace Desafio4Tech.Aplicacao.Facade
+{
+    public class BeneficiarioFacade : FacadeBase<BeneficiarioModel, BeneficiarioDto>, IBeneficiarioFacade
+    {
+        private readonly IBeneficiarioServico _servico;
+        private readonly IPlanoServico _planoServico;
+        public BeneficiarioFacade(IBeneficiarioServico servico, IPlanoServico planoServico, IMapper mapper) : base(servico, mapper)
+        {
+            _servico = servico;
+            _planoServico = planoServico;
+        }
+
+        public async Task<ResponseDto<BeneficiarioDto>> Criar(BeneficiarioDto dto)
+        {
+            ResponseDto<BeneficiarioDto> response = new ResponseDto<BeneficiarioDto>();
+
+            try
+            {   
+                var result = await _servico.Criar(_mapper.Map<BeneficiarioModel>(dto),dto.IdPlano,dto.Plano);
+
+                response.Dados = _mapper.Map<BeneficiarioDto>(result);
+                response.Mensagem = "Beneficiário criado com sucesso";
+                return response;
+            }
+            catch (ServicoException ex)
+            {
+                response.Status = false;
+                response.Error = ex.Error;
+                response.Mensagem = ex.Message;
+                response.Details.Add(new ValidacaoDto
+                {
+                    Field = ex.Field,
+                    Rule = ex.Message
+                });
+
+                return response;
+            }
+            catch (Exception ex)
+            {
+                response.Status = false;
+                response.Error = "ServerError";
+                response.Mensagem = ex.Message;
+                return response;
+            }
+        }
+      
+    }
+}
